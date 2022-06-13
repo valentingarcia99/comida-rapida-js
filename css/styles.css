@@ -1,0 +1,13 @@
+body {
+    background-color: bisque;
+}
+
+.menu__comidas {
+    text-align: center;
+}
+
+.menu__comidas div img {
+    height: 320px;
+    width: 320px;
+    object-fit: fill;
+}
