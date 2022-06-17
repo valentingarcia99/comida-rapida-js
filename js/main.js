@@ -1,17 +1,18 @@
 class Comida {
-    constructor (id, producto, precio) {
+    constructor (id, producto, precio, img) {
         this.id = id;
         this.producto = producto;
-        this.precio = parseFloat(precio);
+        this.precio = parseFloat(precio)
+        this.img = img;
     }
 }
 
-const comida1 = new Comida (1, "Hamburguesa", 350);
-const comida2 = new Comida (2, "Gaseosa", 150);
-const comida3 = new Comida (3, "Papas Fritas", 100);
-const comida4 = new Comida (4, "Nuggets", 200);
-const comida5 = new Comida (5, "Ensalada", 250);
-const comida6 = new Comida (6, "Menu Infantil", 300);
+const comida1 = new Comida (1, "Hamburguesa", 350, "<img src='https://www.hola.com/imagenes/cocina/noticiaslibros/20220527210494/como-hacer-hamburguesa-casera-perfecta-consejos-experto/1-92-523/hamburguesa-nyb-m.jpg'>");
+const comida2 = new Comida (2, "Gaseosa", 150, "<img src='https://cdni.russiatoday.com/actualidad/public_images/2016.02/article/56afe82bc46188be6a8b4606.jpg'>");
+const comida3 = new Comida (3, "Papas Fritas", 100, "<img src='https://www.paulinacocina.net/wp-content/uploads/2017/10/frenchfries.jpg'>");
+const comida4 = new Comida (4, "Nuggets", 200, "<img src='https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/9D900DB3-435D-4AE4-9375-B152D2813750/Derivates/199C60FC-C264-43A3-B822-88AA5E50E954.jpg'>");
+const comida5 = new Comida (5, "Ensalada", 250, "<img src='https://mui.kitchen/__export/1630416534041/sites/muikitchen/img/2021/08/31/shutterstock_1564648540-e1593687715925.jpg_78316239.jpg'>");
+const comida6 = new Comida (6, "Menu Infantil", 300, "<img src='https://www.consumer.es/app/uploads/2021/08/menus-saludables-ninos.jpg'>");
 
 const comidas = [comida1, comida2, comida3, comida4, comida5, comida6];
 
@@ -65,6 +66,21 @@ alert ("¡Gracias por tu recomendación! \n Sugeriste: " + recomendar + " Precio
 alert ("¡Imprimimos nuestro menú con tu comida sugerida para que la veas en la consola!")
 console.log(comidas);
 
+
+
+const menu__comidas = document.getElementById("menu__comidas"),
+seccion = document.getElementsByTagName("section")
+comidas.pop();
+
+for (const el of comidas) {
+    let carta = document.createElement("div");
+    carta.innerHTML = `<div"><h2>${el.producto}</h2>
+    ${el.img}
+    <p>Precio: ${el.precio} + IVA</p>
+    <button class="btn btn-danger">Comprar</button>
+    </div>`;
+    seccion[0].appendChild(carta);
+}
 
 
 

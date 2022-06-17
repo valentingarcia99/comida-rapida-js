@@ -3,11 +3,24 @@ body {
 }
 
 .menu__comidas {
+    margin-top: 35px;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.menu__comidas div img {
+.menu__comidas div {
+    margin: auto 10px 25px 10px;
+}
+
+.menu__comidas img {
     height: 320px;
     width: 320px;
     object-fit: fill;
 }
+
+.btn {
+    margin-top: -10px;
+}
+
