@@ -1,6 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
     cargarVista();
+    itemStorage();
 })
+
+const carritoContainer = document.getElementById("carrito");
+const prodCarrito = document.getElementById("prodCarrito");
+const footCarrito = document.getElementById("footCarrito");
 
 class Comida {
     constructor (id, producto, precio, img) {
@@ -49,22 +54,77 @@ function cargarVista () {
     seccion.innerHTML = panelVista
 }
 
+let carrito = []
+
 seccion.addEventListener ("click", e => {
     
     if (e.target.id === "mybtn") {
         gracias (parseInt(e.target.dataset.id));
+        prodStorage (parseInt(e.target.dataset.id));
     }
 
 })
+
+function prodStorage (id) {
+    let comidaBuscada = comidas.find (comida => comida.id === id);
+    let existeComida = JSON.parse(localStorage.getItem(id));
+
+    if (existeComida === null) {
+        localStorage.setItem(`${id}`, JSON.stringify({...comidaBuscada,cantidad:1}))
+        itemStorage ();
+    } else {
+        existeComida.precio = existeComida.precio + comidaBuscada.precio
+        existeComida.cantidad = existeComida.cantidad + 1
+        localStorage.setItem(`${id}`, JSON.stringify(existeComida))
+        itemStorage();
+    }
+    
+}
 
 function gracias (id) {
     let comidaBuscada = comidas.find (comida => comida.id === id);
     alert("La comida seleccionada es: " + comidaBuscada.producto + "\n" + "El precio más impuestos es: $" + Math.round(multiplicar(comidaBuscada.precio, IVA)) + "\n ¡Gracias por comprar!")
 }
 
+function itemStorage () {
 
+    carrito.length = 0
 
+    for (let i = 0; i < localStorage.length; i++) {
+        let clave = localStorage.key(i)
+        typeof JSON.parse(localStorage.getItem(clave)) == "object" && carrito.push(JSON.parse(localStorage.getItem(clave)))
+    }
 
+    cartelCarrito();
+}
 
+function cartelCarrito () {
 
+    prodCarrito.innerHTML = ""
+
+    carrito.forEach (producto => {
+        prodCarrito.innerHTML += `
+        <td>${producto.producto}</td>
+        <td><img id="fotoCarrito" src="${producto.img}"></td>
+        <td>${producto.precio}</td>
+        <td>${producto.cantidad}</td>
+        `
+    })
+
+    calcularTotal ();
+}
+
+function calcularTotal () {
+    let totalPrecio = carrito.reduce((precioTotal, {precio}) => precioTotal + precio, 0)
+    let totalCantidad = carrito.reduce((cantidadTotal, {cantidad}) => cantidadTotal + cantidad, 0)
+
+    footCarrito.innerHTML = ""
+
+    footCarrito.innerHTML += `
+        <td>Cantidad total: </td>
+        <td>${totalCantidad}</td>
+        <td>Precio total: </td>
+        <td> $${totalPrecio}</td>
+        `
+}
 
