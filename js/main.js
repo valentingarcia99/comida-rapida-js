@@ -59,7 +59,10 @@ let carrito = []
 seccion.addEventListener ("click", e => {
     
     if (e.target.id === "mybtn") {
-        gracias (parseInt(e.target.dataset.id));
+        Swal.fire({
+            title: '¡Producto añadido al carrito!',
+            background: '#ebbd70',
+        })
         prodStorage (parseInt(e.target.dataset.id));
     }
 
@@ -79,11 +82,6 @@ function prodStorage (id) {
         itemStorage();
     }
     
-}
-
-function gracias (id) {
-    let comidaBuscada = comidas.find (comida => comida.id === id);
-    alert("La comida seleccionada es: " + comidaBuscada.producto + "\n" + "El precio más impuestos es: $" + Math.round(multiplicar(comidaBuscada.precio, IVA)) + "\n ¡Gracias por comprar!")
 }
 
 function itemStorage () {
