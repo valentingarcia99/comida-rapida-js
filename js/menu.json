@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "producto": "Hamburguesa",
+        "precio": 350,
+        "img": "https://www.hola.com/imagenes/cocina/noticiaslibros/20220527210494/como-hacer-hamburguesa-casera-perfecta-consejos-experto/1-92-523/hamburguesa-nyb-m.jpg"
+    },
+    {
+        "id": 2,
+        "producto": "Gaseosa",
+        "precio": 150,
+        "img": "https://cdni.russiatoday.com/actualidad/public_images/2016.02/article/56afe82bc46188be6a8b4606.jpg"
+    },
+    {
+        "id": 3,
+        "producto": "Papas Fritas",
+        "precio": 100,
+        "img": "https://www.paulinacocina.net/wp-content/uploads/2017/10/frenchfries.jpg"
+    },
+    {
+        "id": 4,
+        "producto": "Nuggets",
+        "precio": 200,
+        "img": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/9D900DB3-435D-4AE4-9375-B152D2813750/Derivates/199C60FC-C264-43A3-B822-88AA5E50E954.jpg"
+    },
+    {
+        "id": 5,
+        "producto": "Ensalada",
+        "precio": 250,
+        "img": "https://mui.kitchen/__export/1630416534041/sites/muikitchen/img/2021/08/31/shutterstock_1564648540-e1593687715925.jpg_78316239.jpg"
+    },
+    {
+        "id": 6,
+        "producto": "Menú Infantil",
+        "precio": 350,
+        "img": "https://www.consumer.es/app/uploads/2021/08/menus-saludables-ninos.jpg"
+    }
+]
