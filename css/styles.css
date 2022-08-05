@@ -33,3 +33,11 @@ body {
 #tablaCarrito th {
     padding-right: 30px;
 }
+
+#fCompra {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: 0px;
+}

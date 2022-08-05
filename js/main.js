@@ -7,6 +7,7 @@ const carritoContainer = document.getElementById("carrito");
 const prodCarrito = document.getElementById("prodCarrito");
 const footCarrito = document.getElementById("footCarrito");
 const seccion = document.getElementById("comidasContenedor")
+const fCompra = document.getElementById("fCompra")
 
 
 const menuDatos = async() => {
