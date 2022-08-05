@@ -86,11 +86,31 @@ function cartelCarrito () {
         <td><img id="fotoCarrito" src="${producto.img}"></td>
         <td>${producto.precio}</td>
         <td>${producto.cantidad}</td>
+        <td><button id="eliminar" data-id="${producto.id}" type="button" class="btn btn-danger">Eliminar</button></td>
         `
-    })
+    })  
 
     calcularTotal ();
 }
+
+prodCarrito.addEventListener('click', borrarProducto)
+
+function borrarProducto(e) {
+	if (e.target.id === "eliminar"){
+		let idProducto = e.target.dataset.id
+		let comidaStorage = JSON.parse(localStorage.getItem(idProducto))
+		if(comidaStorage.cantidad > 1){
+			comidaStorage.cantidad = comidaStorage.cantidad - 1
+			comidaStorage.precio = comidaStorage.precio - comidaBuscada.precio
+			localStorage.setItem(idProducto, JSON.stringify(comidaStorage))
+			itemStorage()
+		}else{
+			localStorage.removeItem(idProducto)
+			itemStorage()
+		}
+	}
+}
+itemStorage()
 
 function calcularTotal () {
     let totalPrecio = carrito.reduce((precioTotal, {precio}) => precioTotal + precio, 0)
@@ -105,3 +125,18 @@ function calcularTotal () {
         <td> $${totalPrecio}</td>
         `
 }
+
+
+
+fCompra.addEventListener('click',(e) => {
+	Swal.fire({
+		title: 'Gracias por tu compra!',
+		icon: 'success',
+		showClass: {
+		  popup: 'animate__animated animate__fadeInDown'
+		},
+		hideClass: {
+		  popup: 'animate__animated animate__fadeOutUp'
+		}
+	  })	
+})
