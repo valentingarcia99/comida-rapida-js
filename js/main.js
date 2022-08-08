@@ -40,10 +40,22 @@ const renderDOM = async() => {
 seccion.addEventListener ("click", e => {
     
     if (e.target.id === "mybtn") {
-        Swal.fire({
-            title: '¡Producto añadido al carrito!',
-            background: '#ebbd70',
-        })
+
+        Toastify({
+            text: "¡Producto agregado al carrito!",
+            duration: 1000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #FF8442, #FFB363)",
+            },
+            onClick: function(){}
+          }).showToast();
+
         prodStorage (e.target.dataset.id);
     }
 
@@ -99,8 +111,9 @@ prodCarrito.addEventListener('click', borrarProducto)
 function borrarProducto(e) {
 	if (e.target.id === "eliminar"){
 		let idProducto = e.target.dataset.id
+        let comidaBuscada = carrito.find(producto => producto.id === parseInt(idProducto))
 		let comidaStorage = JSON.parse(localStorage.getItem(idProducto))
-		if(comidaStorage.cantidad > 1){
+		if(comidaStorage.cantidad === 1){
 			comidaStorage.cantidad = comidaStorage.cantidad - 1
 			comidaStorage.precio = comidaStorage.precio - comidaBuscada.precio
 			localStorage.setItem(idProducto, JSON.stringify(comidaStorage))
@@ -111,6 +124,7 @@ function borrarProducto(e) {
 		}
 	}
 }
+
 itemStorage()
 
 function calcularTotal () {
@@ -139,5 +153,5 @@ fCompra.addEventListener('click',(e) => {
 		hideClass: {
 		  popup: 'animate__animated animate__fadeOutUp'
 		}
-	  })	
+	  })
 })
