@@ -113,7 +113,7 @@ function borrarProducto(e) {
 		let idProducto = e.target.dataset.id
         let comidaBuscada = carrito.find(producto => producto.id === parseInt(idProducto))
 		let comidaStorage = JSON.parse(localStorage.getItem(idProducto))
-		if(comidaStorage.cantidad === 1){
+		if(comidaStorage.cantidad === 0){
 			comidaStorage.cantidad = comidaStorage.cantidad - 1
 			comidaStorage.precio = comidaStorage.precio - comidaBuscada.precio
 			localStorage.setItem(idProducto, JSON.stringify(comidaStorage))
